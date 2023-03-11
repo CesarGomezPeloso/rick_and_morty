@@ -17,4 +17,5 @@ export default function Cards({characters}) { //const { characters } = props;
          })}
       </div>
    );
-}
+} 
+
