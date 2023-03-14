@@ -1,0 +1,33 @@
+.container{
+    background: #f69d9d;  
+    width: fit-content;
+    padding: 1em;
+    border-radius: 10px;
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    background: #a6e4e7; 
+    display: flex;
+    flex-direction: column;
+    background-image: no-repeat; 
+  /* background-image: fixed;
+  background-image: center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover; */
+} 
+
+.closeButton{
+    
+    border: 1px;
+    background-color:#155263;
+    width: fit-content;
+    height: fit-content;
+    border-radius: 20px;
+    transition: 0,5s;
+    color: white;
+    
+
+}
+.closeButton:hover{
+    background: #8f8787; 
+}

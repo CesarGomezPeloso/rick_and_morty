@@ -1,9 +1,10 @@
-import Card from "./Card";
+import Card from "../Card/Card";
+import { CardsContainer } from "./styledComponents";
 
 export default function Cards({characters}) { //const { characters } = props;
    const onClose = () => window.alert('Emulamos que se cierra la card');
    return( 
-      <div>
+      <CardsContainer>
          {characters.map(({name, species, gender, image}) => {
             return(
             <Card             
@@ -15,7 +16,7 @@ export default function Cards({characters}) { //const { characters } = props;
             />
             );
          })}
-      </div>
+      </CardsContainer>
    );
 };
 
