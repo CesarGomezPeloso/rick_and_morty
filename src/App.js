@@ -15,7 +15,7 @@ function App () {
         <Cards
           characters={characters} />
       </div>
-      <hr />
+      
     </div>
   )
 }
