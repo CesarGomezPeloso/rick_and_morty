@@ -3,7 +3,11 @@ import style from './Card.module.css';
 export default function Card({name, species, gender, image, onClose}) {
    return (
       <div className={style.container}>
+         <div>
+            <p>
          <button onClick={onClose} className= {style.closeButton}>x</button>
+         </p>
+         </div>
          <img src={image} alt="" />         
          <h2>Name: {name}</h2>
          <h3>Species: {species}</h3>
