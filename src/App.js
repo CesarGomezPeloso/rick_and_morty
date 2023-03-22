@@ -1,7 +1,7 @@
 import Cards from './components/Cards/Cards.jsx'
-import Nav from "./components/Nav/Nav.jsx"
+import Nav from   "./components/Nav/Nav.jsx"
 import { useState } from 'react'
-import styled from './App.module.css'
+import { Route, Routes } from 'react-router-dom'
 
 function App () {
   const[characters, setCharacters] = useState([]);
@@ -10,9 +10,13 @@ function App () {
     const URL_BASE= "https://be-a-rym.up.railway.app/api";
     const KEY = "77a44721408a.840716731ca74f902c7b";
 
+    if (characters.find((char) => char.id === id)){
+      return alert ("Personaje Repetido");
+    }
+
     fetch(`${URL_BASE}/character/${id}?key=${KEY}`)
-    .then(response => response.json())
-    .then((data) =>{
+    .then((response) => response.json())
+    .then((data) => {
       if(data.name) {
         setCharacters((oldChars) => [...oldChars, data]);
       } else {
@@ -26,13 +30,14 @@ function App () {
   };
 
   return (
-    <div className='App' style={{ padding: '25px' }}>
-      <div className = {styled.nav} >
+    <div>
         <Nav onSearch = {onSearch} />
-      </div>
-      <div>
-        <Cards characters={characters} onClose={onClose} />
-      </div>
+        <Routes>
+            <Route
+                path='/home'
+                element={<Cards characters={characters} onClose={onClose} />}                
+              />
+        </Routes>
     </div>
   );
 }
