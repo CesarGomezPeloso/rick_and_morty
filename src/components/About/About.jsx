@@ -1,7 +1,7 @@
 import React from "react";
 
 class About extends React.Component{
-    constructor(porps){
+    constructor(props){
         super(props);
     }
 

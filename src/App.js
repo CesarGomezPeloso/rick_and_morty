@@ -1,7 +1,9 @@
-import Cards from './components/Cards/Cards.jsx'
-import Nav from   "./components/Nav/Nav.jsx"
-import { useState } from 'react'
-import { Route, Routes } from 'react-router-dom'
+import Cards from "./components/Cards/Cards.jsx"
+import Nav from "./components/Nav/Nav.jsx"
+import About from "./components/About/About.jsx"
+import {useState} from "react"
+import {Route, Routes} from "react-router-dom"
+import Detail from "./components/Detail/Detail.jsx"
 
 function App () {
   const[characters, setCharacters] = useState([]);
@@ -37,6 +39,8 @@ function App () {
                 path='/home'
                 element={<Cards characters={characters} onClose={onClose} />}                
               />
+              <Route path = "/About" element= {<About />} />
+              {<Route path = "/detail/:detailId" element= {<Detail />} />}
         </Routes>
     </div>
   );
