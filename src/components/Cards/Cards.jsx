@@ -8,6 +8,7 @@ export default function Cards({characters, onClose}) { //const { characters } = 
          {characters.map(({ id, name, species, gender, image}) => {
             return(
             <Card 
+                 key={id}    
                  id= {id}            
                  name = {name}
                  species = {species}
