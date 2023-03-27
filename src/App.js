@@ -17,7 +17,7 @@ function App () {
     !access && navigate("/");
   },[access]);
 
-  //credencialies falsas
+  //credenciales falsas
   const username = "cesar@mail.com"
   const password = "pass123"
 
