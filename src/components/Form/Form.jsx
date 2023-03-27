@@ -1,7 +1,7 @@
 import {useState} from "react";
 import validation from "./validation";
 
-const Form = () => {
+const Form = ({ login }) => {
     const [userData, setUserData]= useState ({
         username: "",
         password: "",
@@ -19,9 +19,14 @@ const Form = () => {
         setUserData ({...userData, [property]: value });
         validation ({...userData, [property]: value }, errors, setErrors);
     };
+
+    const submitHundler = (event) => {
+        event.preventDefault();
+        login(userData);
+    };
     
     return(
-        <form>
+        <form onSubmit={submitHundler}>
             <div>
                 <label htmlForm="username"> Username: </label>
                 <input type="text" name="username" 
