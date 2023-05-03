@@ -1,35 +1,24 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import axios from "axios";
+import useCharacter from "../../hooks/useCharacter";
 
 const Detail = () => {
-    const {detailId} = useParams();
-    const [character, setCharacter]= useState({});
+  const character = useCharacter();
 
-    useEffect(() => {
-     const URL_BASE= "https://be-a-rym.up.railway.app/api";
-     const KEY = "77a44721408a.840716731ca74f902c7b";
-     axios(`${URL_BASE}/character/${detailId}?key=${KEY}`).then ((response) =>
-     setCharacter(response.data)
-     );
-    },[]);
-     
-     return (
-        <div>
-          {character.name ? (
-            <>
-              <h2>{character.name}</h2>
-              <p>{character.status}</p>
-              <p>{character.species}</p>
-              <p>{character.gender}</p>
-              <p>{character.origin?.name}</p>
-              <img src={character.image} alt="img" />
-            </>
-          ) : (
-            <h3>Loading...</h3>
-          )}
-        </div>
-      );
-    };
-    
-    export default Detail;
+  return (
+    <div>
+      {character.name ? (
+        <>
+          <h2>{character.name}</h2>
+          <p>{character.status}</p>
+          <p>{character.species}</p>
+          <p>{character.gender}</p>
+          <p>{character.origin?.name}</p>
+          <img src={character.image} alt="img" />
+        </>
+      ) : (
+        <h3>Loading...</h3>
+      )}
+    </div>
+  );
+};
+
+export default Detail;

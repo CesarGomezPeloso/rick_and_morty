@@ -1,34 +1,35 @@
-.container{
-    
-    background-color:#a2c11c;
+.container {
+
+    background-color: #a2c11c;
     width: fit-content;
-    padding: 1em; /*Tamaño de la caja*/
+    padding: 1em;
+    /*Tamaño de la caja*/
     border-radius: 10px;
-    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
-    text-shadow: 6px 4px 7px rgba(0,0,0,0.6);
+    box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+    text-shadow: 6px 4px 7px rgba(0, 0, 0, 0.6);
     display: flex;
     flex-direction: column;
     margin-bottom: 2em;
-    transition: 0.4s;  
-    
+    transition: 0.4s;
+
 }
 
-.closeButton{
-    border:0px;
+.closeButton {
+    border: 0px;
     background-color: rgb(128, 44, 44);
     width: fit-content;
     height: fit-content;
     border-radius: 15px;
-    transition: 0.4s;    
-    color: white;   
+    transition: 0.4s;
+    color: white;
 }
 
-.closeButton:hover{
+.closeButton:hover {
     /* box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75); */
     margin-bottom: 1em;
 }
 
-.container:hover{
+.container:hover {
     transition: 0.3s;
-    margin-bottom: 1em;   
+    margin-bottom: 1em;
 }

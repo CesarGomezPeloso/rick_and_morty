@@ -17,6 +17,9 @@ render() {
             <Link to= "/home" >
              <h3>Home</h3>
              </Link>
+             <Link to= "/Favorites" >
+             <h3>Favorites</h3>
+             </Link>
             
         </div>
     );

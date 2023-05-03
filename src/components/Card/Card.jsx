@@ -1,70 +1,86 @@
-import {Link} from "react-router-dom"; 
+import { Link } from "react-router-dom";
 import style from "./Card.module.css";
-import {connect} from "react-redux";
-import {  addFavorite, removeFavorite} from "../../redux/actions"
-import { useState } from "react";
+import { connect, useDispatch } from "react-redux";
+import { removeFavorite, getFavorites } from "../../redux/actions";
+import axios from "axios";
+import { useState, useEffect } from "react";
+import React from "react";
 
-function Card({
-   id, 
-   name, 
-   species, 
-   gender, 
-   image, 
-   onClose, 
-   addFavorite, 
-   removeFavorite,
- }) {
+function Card({ id, name, species, gender, image, onClose, myFavorites }) {
+  const [isFav, setIsFav] = useState(false);
+  const dispatch = useDispatch();
 
-const [isFav, setIsFav] = useState(false);
-const handleFavorite = () => {
-   if (isFav){
+
+  const addFavorite = (character) => {
+    axios
+      .post("http://localhost:3001/rickandmorty/fav", character)
+      .then((res) => console.log("ok"));
+  };
+
+  const removeFavorite = async (id) => {
+    await axios.delete(`http://localhost:3001/rickandmorty/fav/${id}`);
+    dispatch(getFavorites());
+    alert("Eliminado con éxito");
+  };
+
+  const handleFavorite = () => {
+    if (isFav) {
       setIsFav(false);
       removeFavorite(id);
-   }else{
+    } else {
       setIsFav(true);
+      //
       addFavorite({
-         id, 
-         name, 
-         species, 
-         gender, 
-         image, 
-         onClose, 
-         addFavorite, 
-         removeFavorite,
-       })
-   }
-};
+        id,
+        name,
+        species,
+        gender,
+        image,
+      });
+    }
+  };
 
-   return (
-      <div className={style.container}>
-          {isFav ? (
+  useEffect(() => {
+    myFavorites.forEach((fav) => {
+      if (fav.id === id) {
+        setIsFav(true);
+      }
+    });
+  }, [myFavorites]);
+
+  return (
+    <div className={style.container}>
+      {isFav ? (
         <button onClick={handleFavorite}>❤️</button>
       ) : (
         <button onClick={handleFavorite}>🤍</button>
       )}
-         <div>
-            <p>
-         <button onClick={()=>onClose(id)} className = {style.closeButton}>x</button>
-           </p>
-         </div>
-         <Link to={`/detail/${id}`}>
-            <h2> {name} </h2>
-         </Link>         
-         <img src={image} alt="" />
-         <h3>Species: {species}</h3>
-         <h3>Gender: {gender}</h3>
-         <div/>
-      </div>
-   );
+      <button onClick={() => onClose(id)} className={style.closeButton}>
+        X
+      </button>
+      <Link to={`/detail/${id}`}>
+        <h2> {name}</h2>
+      </Link>
+      <img src={image} alt="" />
+
+      <h2>Species: {species}</h2>
+      <h2>Gender: {gender}</h2>
+    </div>
+  );
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    removeFavorite: (id) => {
+      dispatch(removeFavorite(id));
+    },
+  };
 };
 
-
-const mapDispatchToPorps = (dispatch)=> {
-   return{
-      addFavorite: (character) => {dispatch(addFavorite(character))},
-      removeFavorite:(id) => {dispatch(removeFavorite(id))} 
-
-   };
+const mapStateToProps = (state) => {
+  return {
+    myFavorites: state.myFavorites,
+  };
 };
 
-export default connect(null, mapDispatchToPorps)(Card);
+export default connect(mapStateToProps, mapDispatchToProps)(Card);
