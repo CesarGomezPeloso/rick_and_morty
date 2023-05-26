@@ -1,0 +1,10 @@
+.nav{
+  background: #acc6aa;   
+  padding: 1em;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-bottom: 5em;
+}
+
+

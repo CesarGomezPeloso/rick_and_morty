@@ -1,0 +1,12 @@
+body {
+  background-image: url(./components/assets/img/RyM_crazy_UHD.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
